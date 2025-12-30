@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To My Best Friend 💫</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff6b9d;
+            --secondary: #ffd93d;
+            --accent: #c8b6ff;
+            --dark: #2d1b3d;
+            --light: #fff5f9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            overflow-x: hidden;
+            background: var(--light);
+            color: var(--dark);
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(-45deg, #ffd3e0, #ffeaa7, #dfe6e9, #fab1a0);
+            background-size: 400% 400%;
+            animation: gradientMove 15s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Page Container */
+        .page {
+            display: none;
+            min-height: 100vh;
+            padding: 2rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .page.active {
+            display: flex;
+            animation: fadeInPage 0.6s ease-out;
+        }
+
+        @keyframes fadeInPage {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Content Box */
+        .content-box {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 3rem 2.5rem;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+        }
+
+        /* Typography */
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .content-box p {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, var(--secondary) 0%, var(--secondary) 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 40%;
+            background-position: 0 85%;
+            padding: 0 4px;
+        }
+
+        /* Buttons */
+        .nav-btn {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.3);
+            font-family: 'Quicksand', sans-serif;
+            margin-top: 2rem;
+            display: inline-block;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 107, 157, 0.4);
+        }
+
+        .btn-container {
+            text-align: center;
+        }
+
+        /* Photo Gallery */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .photo-frame {
+            aspect-ratio: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-frame:hover {
+            transform: scale(1.05);
+        }
+
+        /* Countdown */
+        .countdown-display {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .time-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            min-width: 90px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .time-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .time-label {
+            font-size: 0.9rem;
+            color: var(--dark);
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .signature {
+            text-align: right;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .content-box {
+                padding: 2rem 1.5rem;
+            }
+
+            .content-box p {
+                font-size: 1.1rem;
+            }
+
+            .nav-btn {
+                padding: 0.9rem 2rem;
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--light);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg"></div>
+
+    <!-- Page 1: Welcome -->
+    <div class="page active" id="page1">
+        <div class="content-box">
+            <h1>Hey there 👋</h1>
+            <p>I wanted to share something with you... something I've been thinking about for a while now.</p>
+            <p>It's nothing too serious, just some thoughts that have been on my mind. So I figured, why not put them all together in a way that feels right?</p>
+            <p>Take your time going through this. There's no rush. Just click the button below when you're ready to continue.</p>
+            <div class="btn-container">
+                <button class="nav-btn" onclick="goToPage(2)">Continue →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 2: Special -->
+    <div class="page" id="page2">
+        <div class="content-box">
+            <h2>What Makes You Special 💫</h2>
+            <p><span class="highlight">Your smile has this magical ability to brighten even my darkest days.</span> It's contagious, genuine, and one of my favorite things in this world.</p>
+            <p>Those endless conversations we have about everything and nothing—from silly memes to deep life questions. Time flies when I'm talking to you.</p>
+            <p>The way you handle challenges with grace, your resilience, and how you lift others up even when you're going through your own struggles—that's inspiring.</p>
+            <p><span class="highlight">You're unapologetically yourself</span>, and that's what makes you extraordinary. In a world of pretense, your genuineness is refreshing.</p>
+            <div class="btn-container">
+                <button class="nav-btn" onclick="goToPage(3)">Next →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 3: Journey -->
+    <div class="page" id="page3">
+        <div class="content-box">
+            <h2>Our Journey Together 🛤️</h2>
+            <p>The day we met, I didn't know you would become such an important part of my life. Looking back, I'm grateful for that moment.</p>
+            <p>Remember that moment when we couldn't stop laughing? That's when I knew our friendship was special—we just clicked.</p>
+            <p>We've celebrated victories together and supported each other through tough times. That's when I realized—<span class="highlight">you're not just a friend, you're family</span>.</p>
+            <p>All those spontaneous plans, random adventures, and memories we've created—each one is a chapter in our story that I cherish.</p>
+            <div class="btn-container">
+                <button class="nav-btn" onclick="goToPage(4)">Next →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 4: Memories -->
+    <div class="page" id="page4">
+        <div class="content-box">
+            <h2>Our Memory Lane 📸</h2>
+            <div class="photo-gallery">
+                <div class="photo-frame">🌸</div>
+                <div class="photo-frame">☕</div>
+                <div class="photo-frame">🎭</div>
+            </div>
+            <p style="text-align: center; opacity: 0.8; font-size: 1rem; margin-bottom: 2rem;">
+                <em>Placeholders for all those beautiful moments we've shared</em>
+            </p>
+            <p>Every song we've jammed to, every show we've binged, every inside joke we've created—these moments are treasures I hold close to my heart.</p>
+            <p><span class="highlight">Through ups and downs, you've been my rock.</span> Knowing I have you in my corner makes everything easier and brighter.</p>
+            <div class="btn-container">
+                <button class="nav-btn" onclick="goToPage(5)">Next →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 5: Letter -->
+    <div class="page" id="page5">
+        <div class="content-box">
+            <h2>A Letter to You 💌</h2>
+            <p>Hey you,</p>
+            <p>I wanted to take a moment to tell you how much you mean to me. This isn't just another message—this is me, being honest about something I've been feeling for a while.</p>
+            <p><span class="highlight">The time I spend with you never feels like time spent; it feels like time invested in something beautiful.</span> Every conversation, every laugh, every moment of silence—they all matter. You make ordinary days feel extraordinary.</p>
+            <p>I know I don't say this enough, but thank you. Thank you for being patient with me, for understanding me when I don't make sense, for being there when I need someone, and for simply being you.</p>
+            <p>This? It's my way of showing you that I notice. I notice the little things—your favorite songs, the way you laugh at silly jokes, how you light up when talking about things you care about. I notice because you matter to me, more than I sometimes know how to express.</p>
+            <div class="btn-container">
+                <button class="nav-btn" onclick="goToPage(6)">Next →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 6: New Year -->
+    <div class="page" id="page6">
+        <div class="content-box">
+            <h2>Happy New Year 2025! 🎉</h2>
+            <div class="countdown-display" id="countdown">
+                <div class="time-box">
+                    <div class="time-value" id="days">00</div>
+                    <div class="time-label">Days</div>
+                </div>
+                <div class="time-box">
+                    <div class="time-value" id="hours">00</div>
+                    <div class="time-label">Hours</div>
+                </div>
+                <div class="time-box">
+                    <div class="time-value" id="minutes">00</div>
+                    <div class="time-label">Minutes</div>
+                </div>
+                <div class="time-box">
+                    <div class="time-value" id="seconds">00</div>
+                    <div class="time-label">Seconds</div>
+                </div>
+            </div>
+            <p>Here's to 2025 being filled with more inside jokes, more adventures, more midnight conversations, and more memories that we'll look back on and smile about.</p>
+            <p><span class="highlight">You deserve all the happiness in the world</span>, and I'm lucky to be part of your journey.</p>
+            <p style="text-align: center; margin-top: 3rem; font-size: 1.3rem; color: var(--primary);">
+                Cheers to 2025 and to you! 💫✨🎊
+            </p>
+            <div class="signature">Your Best Friend</div>
+        </div>
+    </div>
+
+    <script>
+        function goToPage(pageNum) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show target page
+            document.getElementById('page' + pageNum).classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Countdown Timer
+        function updateCountdown() {
+            const newYear = new Date('January 1, 2025 00:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = newYear - now;
+
+            if (distance < 0) {
+                document.getElementById('countdown').innerHTML = '<div style="font-size: 2rem; color: var(--primary); font-family: Playfair Display, serif; text-align: center;">Welcome to 2025! 💫</div>';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
